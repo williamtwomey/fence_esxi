@@ -16,6 +16,8 @@ chmod +x /usr/sbin/fence_esxi
 
 3. Update cluster.conf
 
+<code>
 <fencedevices>
 <fencedevice agent="fence_esxi" ipaddr="esx.FQDN.com" login="root" name="esx" passwd="YOURPASSWORDHERE" delay="60" />
 </fencedevices>
+</code>
