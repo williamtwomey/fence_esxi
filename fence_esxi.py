@@ -16,16 +16,16 @@ f = open("/var/log/cluster/fence_esxi.log","w+")
 ts = time.time()
 st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d %H:%M:%S')
 f.write(st + " starting fencing.\n")
-f.write("-n " + options["-n"] + "\n")
-f.write("-a " + options["-a"] + "\n")
-f.write("-l " + options["-l"] + "\n")
-f.write("-p " + options["-p"] + "\n")
+f.write("--plug " + options["--plug"] + "\n")
+f.write("--ip " + options["--ip"] + "\n")
+f.write("--username " + options["--username"] + "\n")
+f.write("--password " + options["--password"] + "\n")
  
 client = paramiko.SSHClient()
 client.load_system_host_keys()
-client.connect(options["-a"],username=options["-l"],password=options["-p"])
+client.connect(options["--ip"],username=options["--username"],password=options["--password"])
  
-command="esxcli vm process list | grep ^" + options["-n"]  + " -A 1 | tail -n 1 | sed \'s/  */ /g\' | cut -d \" \" -f 4"
+command="esxcli vm process list | grep ^" + options["--plug"]  + " -A 1 | tail -n 1 | sed \'s/  */ /g\' | cut -d \" \" -f 4"
  
 f.write("Cmd: " + command + "\n")
  
@@ -81,7 +81,7 @@ else:
     f.write("VM successfully soft killed \n")
  
 #Get VM info while powered off
-command="vim-cmd vmsvc/getallvms | grep " + options["-n"] + " | sed 's/  */ /g' | cut -d \" \" -f 1"
+command="vim-cmd vmsvc/getallvms | grep " + options["--plug"] + " | sed 's/  */ /g' | cut -d \" \" -f 1"
 f.write("Cmd: " + command + "\n")
 stdin, stdout, stderr = client.exec_command(command)
 while not stdout.channel.exit_status_ready():
