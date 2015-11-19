@@ -1,6 +1,6 @@
 Test on ESXi 5.1 and 5.5
 
-1. Install dependancies:
+ 1. Install dependancies:
 
 (RHEL/CentOS)
 yum install python-paramiko
@@ -8,13 +8,13 @@ yum install python-paramiko
 (Debian/Ubuntu)
 apt-get install paramiko
 
-2. Install script:
+ 2. Install script:
 
 Copy to /usr/sbin/fence_esxi 
 
 chmod +x /usr/sbin/fence_esxi 
 
-3. Update cluster.conf
+ 3. Update cluster.conf
 
 ```
 <code>
@@ -24,6 +24,6 @@ chmod +x /usr/sbin/fence_esxi
 </code>
 ```
 
-4. SSH into ESXi servers, just to get SSH keys on local boxes. 
+ 4. SSH into ESXi servers, just to get SSH keys on local boxes. 
 
-5. Check /var/log/cluster/fence_esxi.log if you encounter issues
+ 5. Check /var/log/cluster/fence_esxi.log if you encounter issues
