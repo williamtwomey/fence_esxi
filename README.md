@@ -23,3 +23,7 @@ chmod +x /usr/sbin/fence_esxi
 </fencedevices>
 </code>
 ```
+
+4. SSH into ESXi servers, just to get SSH keys on local boxes. 
+
+5. Check /var/log/cluster/fence_esxi.log if you encounter issues
